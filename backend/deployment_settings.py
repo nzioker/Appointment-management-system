@@ -28,7 +28,7 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://appointment-management-system-iedd.onrender.com",
+    "https://appointment-management-system-frontend-sqtv.onrender.com",
 ]
 
 SESSION_COOKIE_SECURE = True
