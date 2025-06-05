@@ -44,7 +44,9 @@ class UserView(APIView):
 
 @ensure_csrf_cookie
 def get_csrf_token(request):
-    return JsonResponse({'message': 'CSRF cookie set'}) 
+    response = JsonResponse({'message': 'CSRF cookie set'})
+    print("CSRF cookie from view:", response.cookies)
+    return response
     
 class LoginView(APIView):
     permission_classes = [permissions.AllowAny]
