@@ -7,8 +7,8 @@ ALLOWED_HOSTS = [os.environ.get('RENDER_EXTERNAL_HOSTNAME')]
 # CSRF_TRUSTED_ORIGINS = ['https://'+os.environ.get('RENDER_EXTERNAL_HOSTNAME')]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://' + os.environ.get('RENDER_EXTERNAL_HOSTNAME'),  # backend
-    'https://appointment-management-system-frontend-sqtv.onrender.com',  # frontend
+    f"https://{os.environ.get('RENDER_EXTERNAL_HOSTNAME')}",
+    "https://appointment-management-system-frontend-sqtv.onrender.com",
 ]
 
 
