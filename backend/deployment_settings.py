@@ -4,7 +4,13 @@ from .settings import *
 from .settings import BASE_DIR
 
 ALLOWED_HOSTS = [os.environ.get('RENDER_EXTERNAL_HOSTNAME')]
-CSRF_TRUSTED_ORIGINS = ['https://'+os.environ.get('RENDER_EXTERNAL_HOSTNAME')]
+# CSRF_TRUSTED_ORIGINS = ['https://'+os.environ.get('RENDER_EXTERNAL_HOSTNAME')]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://' + os.environ.get('RENDER_EXTERNAL_HOSTNAME'),  # backend
+    'https://appointment-management-system-frontend-sqtv.onrender.com',  # frontend
+]
+
 
 DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -27,9 +33,9 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://appointment-management-system-frontend-sqtv.onrender.com",
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://appointment-management-system-frontend-sqtv.onrender.com",
+# ]
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
