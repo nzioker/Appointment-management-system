@@ -1,21 +1,34 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Provider, Appointment
-
+from django.contrib.auth.models import User
+from .models import ProviderProfile, AvailableSlot, Appointment
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username']
 
-class ProviderSerializer(serializers.ModelSerializer):
+class ProviderProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
     class Meta:
-        model = Provider
-        fields = ['id', 'name']
+        model = ProviderProfile
+        fields = ['id', 'user', 'profession', 'contact']
+
+class AvailableSlotSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AvailableSlot
+        fields = ['id', 'time', 'provider']
+        read_only_fields = ['provider']
+
+
+from rest_framework import serializers
+from .models import Appointment
 
 class AppointmentSerializer(serializers.ModelSerializer):
-    provider_name = serializers.CharField(source='provider.name', read_only=True)
+    user = serializers.CharField(source='user.username', read_only=True)
+    slot_time = serializers.DateTimeField(source='slot.time', read_only=True)
 
     class Meta:
         model = Appointment
-        fields = ['id', 'provider', 'provider_name', 'time']
+        fields = ['id', 'user', 'slot_time']
+

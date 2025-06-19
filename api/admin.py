@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Provider, Appointment
+from .models import ProviderProfile, Appointment, AvailableSlot
 
 # Register your models here.
-admin.site.register(Provider)
+admin.site.register(ProviderProfile)
 admin.site.register(Appointment)
+admin.site.register(AvailableSlot)
